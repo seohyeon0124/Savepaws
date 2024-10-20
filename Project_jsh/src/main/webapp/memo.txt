@@ -1,0 +1,347 @@
+★ 프로젝트명 : Project_jsh
+★ 주제 : 유기동물 관련 사이트 제작
+★ 작성자 : 정서현
+★ 시작파일 : main.jsp
+
+
+
+======================================================================
+ 1. member (회원)
+======================================================================
+
+drop sequence member_seq;
+create sequence member_seq   
+increment by 1
+start with 1
+minvalue 0
+maxvalue 10000
+nocache;
+
+drop table member;
+create table member(
+	no number primary key, -- member_seq
+	name varchar2(20) not null,
+	gender varchar2(15) not null,
+	age varchar2(15) not null,
+	phone varchar2(15) not null,
+	email varchar2(50) unique not null,
+	pw varchar2(30) not null,
+	rrn varchar2(20),
+	anilike varchar2(100), -- 관심동물 번호저장
+	stolike varchar2(100) -- 상품 장바구니 번호저장
+);
+
+insert into member(no,name,gender,age,phone,email,pw) values(0,'관리자','F','20~29','01012345678','admin@gmail.com','1234');
+commit;
+
+col no for 999
+col name for a6
+col gender for a2
+col age for a5
+col phone for a12
+col email for a18
+col pw for a5
+col rrn for a12
+select * from member;
+
+
+
+======================================================================
+ 2. acate (동물 카테고리)
+======================================================================
+
+drop sequence acate_seq;
+create sequence acate_seq   
+increment by 1
+start with 1
+minvalue 0
+maxvalue 10000
+nocache;
+
+drop table acate;
+create table acate(
+	catenum number primary key, -- acate_seq
+	catename varchar2(30) not null,
+	catecode varchar2(20)
+);
+
+insert into acate values(acate_seq.nextval,'강아지','dog');
+insert into acate values(acate_seq.nextval,'고양이','cat');
+insert into acate values(acate_seq.nextval,'토끼','rabbit');
+insert into acate values(acate_seq.nextval,'햄스터','hamster');
+insert into acate values(acate_seq.nextval,'기니피그','guinea_pig');
+insert into acate values(acate_seq.nextval,'페럿','ferret');
+insert into acate values(acate_seq.nextval,'새','bird');
+insert into acate values(acate_seq.nextval,'도마뱀','lizard');
+insert into acate values(acate_seq.nextval,'카멜레온','chameleon');
+insert into acate values(acate_seq.nextval,'뱀','snake');
+insert into acate values(acate_seq.nextval,'거북이','turtle');
+commit;
+
+col catenum for 999
+col catename for a10
+col catecode for a10
+select * from acate;
+
+
+
+======================================================================
+ 3. animal (동물)
+======================================================================
+
+drop sequence animal_seq;
+create sequence animal_seq   
+increment by 1
+start with 1
+minvalue 0
+maxvalue 10000
+nocache;
+
+drop table animal;
+create table animal(
+	anum number primary key, -- animal_seq
+	cate varchar2(15) not null,
+	kind varchar2(30) not null,
+	age number,
+	img varchar2(50),
+	color varchar2(30),
+	state varchar2(20) not null,
+	place varchar2(50),
+	day varchar2(30),
+	content varchar2(100)
+);
+
+insert into animal values(animal_seq.nextval, 'rabbit', '네덜란드 드워프', '1', 'rabbit1.jpg', 'white', '자연사', '공원 호수', '2022-03-10', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '골든 리트리버', '3', 'dog1.jpg', 'white', '구조', '산책로', '2022-03-15', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','스코티시 폴드','3','cat1.jpg','gray','구조','공원 벤치','2022-03-15','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','시베리안 허스키','3','dog2.jpg','gray white','안락사','산책로','2022-04-10','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'rabbit', '플레미시 자이언트', '3', 'rabbit2.jpg', 'gray brown', '입양', '산책로', '2022-05-15', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '비글', '4', 'dog3.jpg', 'brown white', '임시보호', '주택가', '2022-05-21', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','퍼그','4','dog4.jpg','brown','임시보호','주택가','2022-06-12','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'rabbit', '렉스', '2', 'rabbit3.jpg', 'black etc.', '구조', '구시가지 광장', '2022-07-20', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','메인쿤','5','cat2.jpg','brown etc.','안락사','고속도로 휴게소','2022-07-22','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '푸들', '1', 'dog5.jpg', 'white', '입양', '애견 카페', '2022-07-30', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '시베리안 허스키', '5', 'dog6.jpg', 'gray black', '구조', '산', '2022-08-12', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','보더 콜리','2','dog7.jpg','black white','자연사','동물병원','2022-08-21','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'rabbit', '미니 로프', '1', 'rabbit4.jpg', 'white gray', '자연사', '아파트 단지 내', '2022-08-30', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','뱅갈','2','cat3.jpg','black white','입양','아파트 단지 내','2022-09-30','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '치와와', '2', 'dog8.jpg', 'brown', '자연사', '도심 공원', '2022-10-05', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'rabbit', '라이언헤드', '4', 'rabbit5.jpg', 'brown', '구조', '시내 중심 거리', '2022-10-05', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','비글','1','dog9.jpg','brown white','구조','공원','2022-10-30','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '닥스훈트', '6', 'dog10.jpg', 'black brown', '구조', '해변', '2022-11-17', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','노르웨이 숲','4','cat4.jpg','white gray','구조','시골 마을 길','2022-12-05','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'rabbit', '앙고라', '2', 'rabbit6.jpg', 'gray', '구조', '지역 도서관 앞', '2022-12-11', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','말티즈','5','dog11.jpg','white','안락사','주차장','2022-12-14','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '불독', '3', 'dog12.jpg', 'white brown', '임시보호', '버스 정류장', '2023-01-09', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','시베리안','1','cat5.jpg','brown','안락사','해변가','2023-01-20','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'rabbit', '미니 렉스', '3', 'rabbit7.jpg', 'black white', '구조', '공원 산책로', '2023-01-22', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','래브라도 리트리버','3','dog13.jpg','brown','구조','해변','2023-02-03','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '보더 콜리', '4', 'dog14.jpg', 'black white', '입양', '학교 운동장', '2023-03-03', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','페르시안','3','cat6.jpg','gray','구조','공공도서관 앞','2023-03-11','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'rabbit', '폴란드 드워프', '1', 'rabbit8.jpg', 'white etc.', '구조', '지하철역 근처', '2023-03-18', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '코카 스파니엘', '2', 'dog15.jpg', 'brown', '자연사', '공원', '2023-04-15', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','프렌치 불독','4','dog16.jpg','black','임시보호','산책로','2023-04-22','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'rabbit', '미니 샤토레', '2', 'rabbit9.jpg', 'gray black', '구조', '대학교 캠퍼스', '2023-04-25', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','버미즈','2','cat7.jpg','black etc.','임시보호','시장 입구','2023-05-29','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','코카 스파니엘','2','dog17.jpg','brown black','입양','학교 운동장','2023-06-11','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','아비시니안','2','cat8.jpg','white','입양','대형 쇼핑몰 입구','2023-06-12','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '로트와일러', '5', 'dog18.jpg', 'black brown', '구조', '산책로', '2023-06-24', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'rabbit', '샤토레', '5', 'rabbit10.jpg', 'brown etc.', '입양', '주택가 골목', '2023-06-29', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','샴','3','cat9.jpg','gray brown','구조','구 시가지 거리','2023-07-21','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '말티즈', '1', 'dog19.jpg', 'white', '임시보호', '주거 지역', '2023-08-08', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','오리엔탈 숏헤어','4','cat10.jpg','white brown','입양','지하철역 근처','2023-08-15','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'rabbit', '하벨란', '4', 'rabbit11.jpg', 'white brown', '구조', '소규모 공원', '2023-08-15', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','요크셔 테리어','1','dog20.jpg','gray brown','구조','도심 공원','2023-08-19','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','라가머핀','1','cat11.jpg','brown white','구조','도시 공원','2023-08-30','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '래브라도 리트리버', '4', 'dog21.jpg', 'brown', '입양', '강변', '2023-09-19', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','오리엔탈 숏헤어','2','cat12.jpg','black etc.','임시보호','학교 뒤뜰','2023-09-19','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','라가머핀','1','cat13.jpg','gray black','구조','대학교 캠퍼스','2023-10-03','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'rabbit', '뉴질랜드 화이트', '2', 'rabbit12.jpg', 'gray etc.', '구조', '시장 입구', '2023-10-03', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','버미즈','3','cat14.jpg','gray white','구조','지역 공원','2023-10-08','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','닥스훈트','5','dog22.jpg','black brown','구조','강변','2023-10-27','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '셔틀랜드 쉽독', '3', 'dog23.jpg', 'gray', '구조', '농장', '2023-11-01', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','페르시안','4','cat15.jpg','brown gray','입양','커뮤니티 센터 앞','2023-11-25','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','골든 리트리버','3','dog24.jpg','white','구조','산책로','2023-12-05','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','시베리안','5','cat16.jpg','white gray etc.','임시보호','산책로 입구','2023-12-10','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','샴','2','cat17.jpg','etc.','구조','공원 산책로','2023-12-25','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','노르웨이 숲','2','cat18.jpg','black','구조','교외 숲속','2024-01-15','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','시츄','2','dog25.jpg','white brown','임시보호','주차장','2024-01-16','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval, 'dog', '잭 러셀 테리어', '2', 'dog26.jpg', 'white brown', '구조', '시장', '2024-01-20', '한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','아비시니안','3','cat19.jpg','brown gray','구조','카페 앞','2024-01-30','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','브리티시 숏헤어','5','cat20.jpg','white etc.','임시보호','쇼핑몰 주차장','2024-02-18','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','뱅갈','1','cat21.jpg','gray etc.','구조','해안 산책로','2024-02-20','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','메인쿤','6','cat22.jpg','brown black','입양','중앙 시장','2024-03-05','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','잭 러셀 테리어','4','dog27.jpg','white black','구조','시장','2024-03-08','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','스코티시 폴드','4','cat23.jpg','white black','구조','공원 호수 가','2024-03-28','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'cat','러시안 블루','3','cat24.jpg','gray','임시보호','동물병원 앞','2024-04-10','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','포메라니안','1','dog28.jpg','brown','구조','카페','2024-04-12','한줄소개글을입력하세요');
+insert into animal values(animal_seq.nextval,'dog','샤페이','6','dog29.jpg','gray','구조','병원 앞','2024-04-24','한줄소개글을입력하세요');
+
+commit;
+
+col anum for 9
+col cate for a5
+col kind for a5
+col age for 9
+col img for a5
+col color for a5
+col state for a5
+col place for a5
+col day for a5
+col content for a10
+
+select * from animal;
+
+
+
+======================================================================
+ 4. request (동물신청)
+======================================================================
+
+drop sequence request_seq;
+create sequence request_seq   
+increment by 1
+start with 1
+minvalue 0
+maxvalue 10000
+nocache; 
+
+drop table request;
+create table request(
+	reqno number primary key,
+	memno number,
+	anino number,
+	state varchar2(20) -- 신청/승인/거절
+);
+
+
+
+======================================================================
+ 5. review (동물소식)
+======================================================================
+
+drop sequence review_seq;
+create sequence review_seq   
+increment by 1
+start with 1
+minvalue 0
+maxvalue 10000
+nocache;
+
+drop table review;
+create table review(
+	num number primary key, -- review_seq   
+	mno number,
+	aname varchar2(20),
+	title varchar2(100),
+	img varchar2(50),
+	content varchar2(300),
+	read number default 0,
+	day date default sysdate
+);
+
+insert into review(num,mno,aname,title,img,content) values(review_seq.nextval,0,'감자','[포메라니안] 감자의 하루입니다~','review1.jpg','잘 지내고있어요!'); 
+insert into review(num,mno,aname,title,img,content) values(review_seq.nextval,0,'감자','[웰시코기] 감자의 하루입니다~','review2.jpg','잘 지내고있어요!');
+
+commit;
+
+col num for 99
+col mno for 9
+col aname for a5
+col title for a20
+col img for a12
+col content for a16
+col read for 9
+col day for a8
+select * from review;
+
+
+
+======================================================================
+ 6. ask (문의하기)
+======================================================================
+
+drop sequence ask_seq;
+create sequence ask_seq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+  
+drop table ask;
+create table ask( 
+	bno number not null primary key,
+	mno number not null,
+	title varchar2(100) not null,
+	reg_date date default sysdate,
+	readcount int default 0,
+	ref number not null,			-- ref : 한묶음 (원글은 num값과 같음)
+	re_step number not null,		
+	re_level number not null,		-- 원글:0, 답글:1, 답답:2, 답답답:3
+	content varchar2(100) not null
+);
+
+insert into ask(bno,mno,title,ref,re_step,re_level,content) values(ask_seq.nextval,1,'문의1',1,0,0,'내용1');
+insert into ask(bno,mno,title,ref,re_step,re_level,content) values(ask_seq.nextval,1,'문의2',2,0,0,'내용2');
+commit;
+
+
+
+
+======================================================================
+ 7. free (지역기반 무료나눔)
+======================================================================
+
+drop sequence free_seq;
+create sequence free_seq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+drop table free;
+create table free(
+	no number primary key, -- free_seq
+	mno number, -- 회원번호
+	name varchar2(50), -- 상품명
+	city varchar2(30), -- 도시
+	place varchar2(30), -- 지역
+	lat varchar2(50), -- 위도
+	lng varchar2(50), -- 경도
+	content varchar2(100), -- 설명
+	state varchar2(20), -- 상태 (등록/신청)
+	img varchar2(50), -- 이미지
+	day date default sysdate, -- 등록날짜
+	want varchar2(50) -- 신청 회원 이메일
+);
+
+insert into free values(free_seq.nextval,0,'강아지목줄','서울','마포구','37.5665426','126.9195486','이제 사용하지 않는 목줄이라서 정리해요! 소형견에게 맞습니다!','등록','free1.jpg','24/03/02','-');
+insert into free values(free_seq.nextval, 0, '애견 밥그릇', '서울', '마포구', '37.5566426', '126.9296486', '새것 같은 애견 밥그릇입니다. 사용하지 않아요!', '등록', 'free2.jpg','24/03/014','-');
+insert into free values(free_seq.nextval, 0, '애견간식', '서울', '마포구', '37.5567426', '126.9192466', '개봉하지 않은 애견 간식입니다.', '등록', 'free3.jpg', '24/03/18','-');
+insert into free values(free_seq.nextval, 0, '강아지 옷', '서울', '마포구', '37.5868426', '126.9172486', '사용하지 않는 강아지 옷, 소형견용입니다.', '등록', 'free4.jpg','24/03/24','-');
+insert into free values(free_seq.nextval, 0, '고양이 장난감', '서울', '마포구', '37.5569426', '126.9119486', '고양이가 가지고 놀 수 있는 장난감입니다.', '등록', 'free5.jpg','24/03/31','-');
+insert into free values(free_seq.nextval, 0, '애견 침대', '서울', '마포구', '37.5570426', '126.9220486', '애견 침대, 거의 새것입니다.', '등록', 'free6.jpg','24/04/01','-');
+insert into free values(free_seq.nextval, 0, '강아지 울타리', '서울', '마포구', '37.5471426', '126.9201486', '사용하지 않는 강아지 울타리입니다.', '등록', 'free7.jpg','24/04/06','-');
+insert into free values(free_seq.nextval, 0, '애견 용품 세트', '서울', '마포구', '37.5572426', '126.9232486', '애견 용품 세트, 다양한 물품 포함.', '등록', 'free8.jpg','24/04/13','-');
+insert into free values(free_seq.nextval, 0, '강아지 샴푸', '서울', '마포구', '37.5563426', '126.9103486', '강아지 샴푸, 사용 흔적 거의 없습니다.', '등록', 'free9.jpg','24/04/19','-');
+insert into free values(free_seq.nextval, 0, '애견 리드줄', '서울', '마포구', '37.5574426', '126.9204486', '애견 리드줄, 상태 좋아요.', '등록', 'free10.jpg', '24/04/21','-');
+insert into free values(free_seq.nextval, 0, '강아지 물병', '서울', '마포구', '37.5557426', '126.9205486', '외출 시 사용하기 좋은 강아지 물병입니다.', '등록','free11.jpg,'24/04/27','-');
+insert into free values(free_seq.nextval, 0, '밥그릇','서울','마포구','37.5148000','126.9197000','반려동물용 밥그릇, 깨끗하게 사용했습니다.','등록','free12.jpg','24/05/01','-');
+insert into free values(free_seq.nextval, 0, '애견간식','서울','마포구','37.5636500','126.9127000','개봉했지만 거의 사용하지 않은 애견간식입니다.','등록','free13.jpg','24/05/05','-');
+insert into free values(free_seq.nextval, 0, '물병','서울','마포구','37.5567000','126.9198000','산책할 때 사용하기 좋은 물병입니다.','등록','free14.jpg','24/05/07','-');
+insert into free values(free_seq.nextval, 0, '고양이 스크래쳐','인천','연수구','37.3925126','126.6393808','사용을 안해줘서 거의 새거입니다...','등록','free15.jpg','24/05/07','-');
+insert into free values(free_seq.nextval, 0, '토끼 울타리','인천','연수구','37.3981874','126.6463552','토끼 울타리 필요하신분!!?','등록','free16.jpg','24/05/08','-');
+commit;
+
+col no for 99
+col mno for 99
+col name for a6
+col city for a6
+col place for a6
+col content for a12
+col state for a5
+col img for a12
+col day for a10
+select * from free;
