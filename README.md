@@ -104,8 +104,6 @@
             │  ├─ blog.css
             │  ├─ delAnilike.jsp
             │  └─ delRequest.jsp
-            ├─ bottom.jsp
-            ├─ carousel.css
             ├─ free
             │  ├─ blog.css
             │  ├─ delFree.jsp
@@ -120,13 +118,9 @@
             │  ├─ free_top.jsp
             │  ├─ free_want.jsp
             │  └─ map.js
-            ├─ img
             ├─ introduce
             │  ├─ carousel.css
             │  └─ introduce.jsp
-            ├─ js
-            ├─ main.css
-            ├─ main.jsp
             ├─ member
             │  ├─ checkEmailProc.jsp
             │  ├─ findid.jsp
@@ -140,7 +134,6 @@
             │  ├─ register.jsp
             │  ├─ registerProc.jsp
             │  └─ signin.css
-            ├─ memo.txt
             ├─ review
             │  ├─ review.jsp
             │  ├─ reviewProc.jsp
@@ -154,7 +147,14 @@
             │  ├─ blog.css
             │  ├─ store.jsp
             │  └─ store_top.jsp
+            ├─ js
+            ├─ img
+            ├─ main.css
+            ├─ main.jsp
             ├─ top.jsp
+            ├─ bottom.jsp
+            ├─ carousel.css
+            ├─ memo.txt
             └─ 이미지
 ```
 
