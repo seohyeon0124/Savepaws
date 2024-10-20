@@ -12,11 +12,11 @@
 
 ## 1. 개발 환경
 
-- 개발 인원: 1명
-- 개발 기간: 2024-04-23 ~ 2024-05-08
-- 프로그래밍 언어: Java, JavaScript, JSP
-- GUI 프레임워크: Bootstrap, jQuery
-- 데이터베이스: Oracle
+- 개발 인원 : 1명
+- 개발 기간 : 2024-04-23 ~ 2024-05-08
+- 프로그래밍 언어 : Java, JavaScript, JSP
+- GUI 프레임워크 : Bootstrap, jQuery
+- 데이터베이스 : Oracle
 
 <br>
 
