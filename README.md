@@ -12,10 +12,10 @@
 
 ## 1. 개발 환경
 
-- 개발 인원 : 1명
-- 개발 기간 : 2024-4-23 ~ 2024-5-8
-- 프로그래밍 언어: Java
-- GUI 프레임워크: Swing
+- 개발 인원: 1명
+- 개발 기간: 2024-04-23 ~ 2024-05-08
+- 프로그래밍 언어: Java, JavaScript, JSP
+- GUI 프레임워크: Bootstrap, jQuery
 - 데이터베이스: Oracle
 
 <br>
@@ -23,29 +23,139 @@
 ## 2. 프로젝트 구조
 
 ```
-├── README.md
-└── Project
-     ├── bin
-     ├── images
-     ├── images_png
-     ├── .classpath
-     ├── .settings
-     ├── .project
-     └── src
-          ├── Admin.java
-          ├── CouponBean.java
-          ├── CouponDao.java
-          ├── FilterDao.java
-          ├── Main.java
-          ├── Menu.java
-          ├── MenuBean.java
-          ├── MenuDao.java
-          ├── OrderDao.java
-          ├── OrderMenuBean.java
-          ├── ProductsBean.java
-          ├── SortDao.java
-          ├── Surve.java
-          └── memo.txt
+├─README.md
+└─ Project_jsh
+   ├─ .classpath
+   ├─ .project
+   ├─ .settings
+   ├─ build
+   └─ src
+      └─ main
+         ├─ java
+         │  └─ my
+         │     ├─ animal
+         │     │  ├─ AnicateBean.java
+         │     │  ├─ AnicateDao.java
+         │     │  ├─ AnimalBean.java
+         │     │  ├─ AnimalDao.java
+         │     │  ├─ RequestBean.java
+         │     │  └─ RequestDao.java
+         │     ├─ free
+         │     │  ├─ FreeBean.java
+         │     │  └─ FreeDao.java
+         │     ├─ member
+         │     │  ├─ MemberBean.java
+         │     │  └─ MemberDao.java
+         │     ├─ review
+         │     │  ├─ ReviewBean.java
+         │     │  └─ ReviewDao.java
+         │     └─ store
+         │        ├─ StoreBean.java
+         │        ├─ StoreDao.java
+         │        ├─ StorecateBean.java
+         │        └─ StorecateDao.java
+         └─ webapp
+            ├─ META-INF
+            ├─ WEB-INF
+            │  └─ lib
+            │     ├─ commons-collections-3.1.jar
+            │     ├─ commons-dbcp-1.2.1.jar
+            │     ├─ commons-pool-1.2.jar
+            │     ├─ cos.jar
+            │     ├─ gson-2.8.5.jar
+            │     ├─ json-simple-1.1.1.jar
+            │     ├─ ojdbc8.jar
+            │     └─ servlet-api.jar
+            ├─ admin
+            │  ├─ admin.jsp
+            │  ├─ admin_bottom.jsp
+            │  ├─ admin_top.jsp
+            │  ├─ aniCate.jsp
+            │  ├─ animalList.jsp
+            │  ├─ animalProc.jsp
+            │  ├─ animalUser.jsp
+            │  ├─ animalView.jsp
+            │  ├─ blog.css
+            │  ├─ cateProc.jsp
+            │  ├─ deleteAnimal.jsp
+            │  ├─ deleteCate.jsp
+            │  ├─ deleteStore.jsp
+            │  ├─ inputAnimal.jsp
+            │  ├─ inputCate.jsp
+            │  ├─ inputStore.jsp
+            │  ├─ requestProc.jsp
+            │  ├─ storeCate.jsp
+            │  ├─ storeList.jsp
+            │  ├─ storeProc.jsp
+            │  ├─ storeView.jsp
+            │  ├─ updateAnimal.jsp
+            │  ├─ updateAnimalProc.jsp
+            │  ├─ updateStore.jsp
+            │  ├─ updateStoreProc.jsp
+            │  └─ userList.jsp
+            ├─ animal
+            │  ├─ aniRequest.jsp
+            │  ├─ aniRequestAll.jsp
+            │  ├─ anilike.jsp
+            │  ├─ anilikeBtn.jsp
+            │  ├─ animal.jsp
+            │  ├─ animalView.jsp
+            │  ├─ animal_top.jsp
+            │  ├─ blog.css
+            │  ├─ delAnilike.jsp
+            │  └─ delRequest.jsp
+            ├─ bottom.jsp
+            ├─ carousel.css
+            ├─ free
+            │  ├─ blog.css
+            │  ├─ delFree.jsp
+            │  ├─ free.jsp
+            │  ├─ freeView.jsp
+            │  ├─ free_around.jsp
+            │  ├─ free_input.jsp
+            │  ├─ free_inputProc.jsp
+            │  ├─ free_my.jsp
+            │  ├─ free_place.jsp
+            │  ├─ free_thing.jsp
+            │  ├─ free_top.jsp
+            │  ├─ free_want.jsp
+            │  └─ map.js
+            ├─ img
+            ├─ introduce
+            │  ├─ carousel.css
+            │  └─ introduce.jsp
+            ├─ js
+            ├─ main.css
+            ├─ main.jsp
+            ├─ member
+            │  ├─ checkEmailProc.jsp
+            │  ├─ findid.jsp
+            │  ├─ findidProc.jsp
+            │  ├─ findpw.jsp
+            │  ├─ findpwProc.jsp
+            │  ├─ login.jsp
+            │  ├─ loginProc.jsp
+            │  ├─ logout.jsp
+            │  ├─ naverLogin.jsp
+            │  ├─ register.jsp
+            │  ├─ registerProc.jsp
+            │  └─ signin.css
+            ├─ memo.txt
+            ├─ review
+            │  ├─ review.jsp
+            │  ├─ reviewProc.jsp
+            │  ├─ review_delete.jsp
+            │  ├─ review_form.jsp
+            │  ├─ review_top.jsp
+            │  ├─ review_update.jsp
+            │  ├─ review_updateProc.jsp
+            │  └─ review_view.jsp
+            ├─ store
+            │  ├─ blog.css
+            │  ├─ store.jsp
+            │  └─ store_top.jsp
+            ├─ top.jsp
+            └─ 이미지
 ```
 
 <br>
