@@ -177,7 +177,7 @@
 - 관리자 로그인시 메뉴바에 Admin 메뉴가 추가됩니다. 해당 메뉴에서 사이트를 관리할 수 있습니다.
 
 <img width="500" alt="main" src="https://github.com/user-attachments/assets/adc65057-ccb7-47bf-b8fa-a08a610a1a83">
-<br>
+<br><br>
 
 ### 🌱 2. 로그인 Login
 
@@ -203,7 +203,7 @@
 - 누락 또는 올바르지 않은 값 입력시 유효성 검사를 진행합니다.
 
 <img width="300" alt="image" src="https://github.com/user-attachments/assets/4180520b-5396-45af-97db-bc71b7e87479">
-<br>
+<br><br>
 
 ### 🌱 3. 소개 Introduce
 
